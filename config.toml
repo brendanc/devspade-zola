@@ -1,0 +1,30 @@
+# The URL the site will be built for
+base_url = "https://devspade.com"
+theme = "hermit_zola"
+title = "Brendan Caffrey"
+
+# Whether to automatically compile all Sass files in the sass directory
+compile_sass = true
+
+# Whether to build a search index to be used later on by a JavaScript library
+build_search_index = false
+
+[markdown]
+# Whether to do syntax highlighting
+# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
+highlight_code = true
+
+[extra]
+# Put all your custom variables here
+home_subtitle = "builder of products, processes and teams"
+
+hermit_social = [
+    {name = "github", link="https://github.com/brendanc"},
+    {name = "linkedin", link="https://linkedin.com/in/bcaffrey"},
+    {name = "email", link="mailto:brendan@devspade.com" }
+]
+
+[extra.author]
+name = "Brendan Caffrey"
+email = "brendan@devspade.com"
+
