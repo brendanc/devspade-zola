@@ -1,6 +1,9 @@
 # Zola build output
 /public/
 
+# GitHub Pages may auto-create CNAME in root, but we use static/CNAME
+/CNAME
+
 # OS-specific files
 .DS_Store
 .DS_Store?
