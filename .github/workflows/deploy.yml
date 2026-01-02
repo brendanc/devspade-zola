@@ -17,3 +17,5 @@ jobs:
         uses: shalzz/zola-deploy-action@v0.21.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Explicitly tell it to use the gh-pages branch
+          PAGES_BRANCH: gh-pages
