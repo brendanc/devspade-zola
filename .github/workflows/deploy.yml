@@ -2,7 +2,8 @@ name: Deploy Devspade Zola to Pages
 on:
   push:
     branches:
-      - main  # or 'master' depending on your default branch
+      - main  
+    workflow_dispatch:  
 jobs:
   build:
     runs-on: ubuntu-latest
