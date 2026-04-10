@@ -1,23 +1,49 @@
 name: Deploy Devspade Zola to Pages
+
 on:
   push:
     branches:
-      - main  
-    workflow_dispatch:  
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           submodules: false
-      
-      - name: Build and deploy
-        uses: shalzz/zola-deploy-action@v0.21.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # Explicitly tell it to use the gh-pages branch
-          PAGES_BRANCH: gh-pages
+
+      - name: Install Zola
+        uses: taiki-e/install-action@v2
+        with:
+          tool: zola@0.21.0
+
+      - name: Build site
+        run: zola build
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
