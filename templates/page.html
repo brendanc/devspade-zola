@@ -57,27 +57,30 @@
 <style>
 .hero-image {
   width: 100%;
-  margin-bottom: 2em;
-  margin-top: 0;
+  max-width: 42rem;
+  margin: 0 auto 1.25em;
 }
 
 .hero-image img {
   width: 100%;
-  height: auto;
+  max-height: 200px;
   border-radius: 4px;
   display: block;
-  max-width: 100%;
   object-fit: cover;
+  object-position: center;
 }
 
 /* White background post content */
 .site-main article.thin {
   background: #ffffff;
   color: #000000;
-  padding: 2.5em 3em;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 2em;
+  padding: 1.5em 1.75em;
+  border-radius: 6px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
+  margin-bottom: 1.5em;
+  max-width: 40rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Post header styling */
@@ -87,19 +90,37 @@
 
 .site-main article.thin .post-header h1 {
   color: #000000;
+  font-size: 1.45rem;
+  line-height: 1.25;
+  font-weight: 600;
+  margin: 0.15em 0 0 0;
+}
+
+.site-main article.thin .post-header .post-subtitle {
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: #444444;
+  margin: 0.35em 0 0 0;
+  padding: 0.5em 0 0 0.85em;
+  border-left: 2px solid #018574;
+  font-weight: 500;
 }
 
 .site-main article.thin .post-header .post-meta {
   color: #666666;
+  font-size: 0.8rem;
 }
 
 /* Content area */
 .site-main article.thin .content {
   color: #000000;
+  font-size: 0.9375rem;
+  line-height: 1.65;
 }
 
 .site-main article.thin .content p {
   color: #000000;
+  margin: 0.65em 0;
 }
 
 .site-main article.thin .content h1,
@@ -159,6 +180,7 @@
 /* Post footer */
 .site-main article.thin .post-info {
   color: #666666;
+  font-size: 0.8rem;
 }
 
 .site-main article.thin .post-info a {
@@ -189,7 +211,15 @@
 /* Responsive padding */
 @media (max-width: 760px) {
   .site-main article.thin {
-    padding: 1.5em 1.5em;
+    padding: 1.15em 1.15em;
+  }
+
+  .hero-image img {
+    max-height: 160px;
+  }
+
+  .site-main article.thin .post-header h1 {
+    font-size: 1.25rem;
   }
 }
 </style>
@@ -224,6 +254,9 @@
 		    {% endif %}
 	  </div>
 	  <h1>{{ page.title }}</h1>
+	  {% if page.extra.subtitle %}
+	  <p class="post-subtitle">{{ page.extra.subtitle }}</p>
+	  {% endif %}
 	</header>
 
 	<div class="content">
