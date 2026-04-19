@@ -1,0 +1,12 @@
+---
+description: How this Zola site is built and published
+alwaysApply: true
+---
+
+# Deploy and hosting
+
+- **Hosting:** GitHub Pages (`environment: github-pages` in Actions).
+- **Trigger:** Pushing to `main` runs `.github/workflows/deploy.yml` (Zola build in CI, artifact upload, `deploy-pages`).
+- **Manual run:** Workflow also supports `workflow_dispatch` in the Actions tab.
+- **Local check:** `zola build` (output in `public/`). To include drafts: `zola build --drafts` or `zola serve --drafts`.
+- Do not expect a separate manual `gh-pages` branch push for the live site; deployment is via the Pages artifact from `main`.
